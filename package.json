@@ -5,7 +5,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "build:watch": "yarn build --watch --progress",
-    "analyze": "cross-env NODE_ENV=development webpack",
+    "analyze:dev": "cross-env NODE_ENV=development ANALYZE=true webpack",
+    "analyze:prod": "cross-env NODE_ENV=production ANALYZE=true webpack",
     "serve": "node --enable-source-maps dist/server.js",
     "serve:dev": "wait-on dist/server.js && NODE_OPTIONS=--enable-source-maps nodemon dist/server.js",
     "dev": "npm-run-all -s clean -p build:watch serve:dev",
@@ -24,6 +25,7 @@
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
     "@babel/preset-react": "^7.16.7",
+    "@loadable/component": "^5.15.2",
     "@stylelint/postcss-css-in-js": "^0.37.2",
     "@types/lodash": "^4.14.178",
     "@types/react": "^17.0.38",

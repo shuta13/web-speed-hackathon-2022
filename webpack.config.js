@@ -18,6 +18,7 @@ const DIST_ROOT = abs("./dist");
 const DIST_PUBLIC = abs("./dist/public");
 
 const NODE_ENV = process.env.NODE_ENV;
+const ANALYZE = process.env.ANALYZE;
 
 /** @type {Array<import('webpack').Configuration>} */
 module.exports = [
@@ -63,7 +64,7 @@ module.exports = [
       new CopyPlugin({
         patterns: [{ from: PUBLIC_ROOT, to: DIST_PUBLIC }],
       }),
-      NODE_ENV === "development" ? new BundleAnalyzerPlugin() : () => {},
+      ANALYZE === "true" ? new BundleAnalyzerPlugin() : () => {},
     ],
     resolve: {
       extensions: [".js", ".jsx"],
