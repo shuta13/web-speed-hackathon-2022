@@ -39,7 +39,7 @@ const calcImageSize = (cv, img) => {
 
 /** @type {React.VFC<Props>} */
 export const TrimmedImage = ({ height, src, width, name }) => {
-  const [dataUrl, setDataUrl] = useState(null);
+  const [dataUrl, setDataUrl] = useState("");
   /** @type {React.MutableRefObject<HTMLImageElement>} */
   const ref = useRef();
 
