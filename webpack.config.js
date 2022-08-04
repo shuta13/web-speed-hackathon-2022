@@ -63,7 +63,7 @@ module.exports = [
       new CopyPlugin({
         patterns: [{ from: PUBLIC_ROOT, to: DIST_PUBLIC }],
       }),
-      new BundleAnalyzerPlugin(),
+      NODE_ENV === "development" ? new BundleAnalyzerPlugin() : () => {},
     ],
     resolve: {
       extensions: [".js", ".jsx"],
