@@ -1277,7 +1277,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.7.7":
+"@babel/runtime@npm:^7.7.7":
   version: 7.18.9
   resolution: "@babel/runtime@npm:7.18.9"
   dependencies:
@@ -1762,16 +1762,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.11":
-  version: 17.0.13
-  resolution: "@types/react-dom@npm:17.0.13"
-  dependencies:
-    "@types/react": "*"
-  checksum: 62c42a54ac8961c23a0e74b9cdd8b0a78563757e462b1ab665b2aa365bfd8b86a73d3f6eafc09a4a80fb08659321db168f012aa597c41c0df36f645a94e9266b
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:*, @types/react@npm:^17.0.38":
+"@types/react@npm:*":
   version: 17.0.39
   resolution: "@types/react@npm:17.0.39"
   dependencies:
@@ -5020,15 +5011,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"history@npm:^5.2.0":
-  version: 5.3.0
-  resolution: "history@npm:5.3.0"
-  dependencies:
-    "@babel/runtime": ^7.7.6
-  checksum: d73c35df49d19ac172f9547d30a21a26793e83f16a78386d99583b5bf1429cc980799fcf1827eb215d31816a6600684fba9686ce78104e23bd89ec239e7c726f
-  languageName: node
-  linkType: hard
-
 "hoist-non-react-statics@npm:^3.0.0, hoist-non-react-statics@npm:^3.3.0, hoist-non-react-statics@npm:^3.3.1":
   version: 3.3.2
   resolution: "hoist-non-react-statics@npm:3.3.2"
@@ -7446,6 +7428,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"preact-router@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "preact-router@npm:4.1.0"
+  peerDependencies:
+    preact: ">=10"
+  checksum: 5cde4340dd92562bbc9b6370471846a4ba11bc3678238fc68abfdad10bb3bdaf7e6379c281dfabbf220a7213670d74a6fc167abecee80ec1771f566316df2c2c
+  languageName: node
+  linkType: hard
+
 "preact@npm:^10.10.0":
   version: 10.10.0
   resolution: "preact@npm:10.10.0"
@@ -7651,30 +7642,6 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
-  languageName: node
-  linkType: hard
-
-"react-router-dom@npm:^6.3.0":
-  version: 6.3.0
-  resolution: "react-router-dom@npm:6.3.0"
-  dependencies:
-    history: ^5.2.0
-    react-router: 6.3.0
-  peerDependencies:
-    react: ">=16.8"
-    react-dom: ">=16.8"
-  checksum: 77603a654f8a8dc7f65535a2e5917a65f8d9ffcb06546d28dd297e52adcc4b8a84377e0115f48dca330b080af2da3e78f29d590c89307094d36927d2b1751ec3
-  languageName: node
-  linkType: hard
-
-"react-router@npm:6.3.0":
-  version: 6.3.0
-  resolution: "react-router@npm:6.3.0"
-  dependencies:
-    history: ^5.2.0
-  peerDependencies:
-    react: ">=16.8"
-  checksum: 7be673f5e72104be01e6ab274516bdb932efd93305243170690f6560e3bd1035dd1df3d3c9ce1e0f452638a2529f43a1e77dcf0934fc8031c4783da657be13ca
   languageName: node
   linkType: hard
 
@@ -9842,8 +9809,6 @@ __metadata:
     "@fortawesome/fontawesome-free": ^5.15.4
     "@loadable/component": ^5.15.2
     "@stylelint/postcss-css-in-js": ^0.37.2
-    "@types/react": ^17.0.38
-    "@types/react-dom": ^17.0.11
     "@types/styled-components": ^5.1.19
     "@typescript-eslint/eslint-plugin": ^5.13.0
     "@typescript-eslint/parser": ^5.13.0
@@ -9872,9 +9837,9 @@ __metadata:
     pino-pretty: ^7.3.0
     postcss-syntax: ^0.36.2
     preact: ^10.10.0
+    preact-router: ^4.1.0
     prettier: ^2.5.1
     react-helmet: ^6.1.0
-    react-router-dom: ^6.3.0
     rimraf: ^3.0.2
     scaffdog: ^1.1.0
     shelljs: ^0.8.5

@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 // import useSWR from "swr";
 
@@ -99,9 +98,7 @@ function useHeroImage(todayRaces) {
 }
 
 /** @type {React.VFC} */
-export const Top = () => {
-  const { date = dayjs().format("YYYY-MM-DD") } = useParams();
-
+export const Top = ({ date = dayjs().format("YYYY-MM-DD") }) => {
   const ChargeButton = styled.button`
     background: ${Color.mono[700]};
     border-radius: ${Radius.MEDIUM};

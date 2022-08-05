@@ -99,7 +99,7 @@ const Item = ({ race }) => {
               width={100}
               name={race.name}
             />
-            <RaceButton to={`/races/${race.id}/race-card`}>投票</RaceButton>
+            <RaceButton href={`/races/${race.id}/race-card`}>投票</RaceButton>
           </Stack>
         </Stack.Item>
       </Stack>

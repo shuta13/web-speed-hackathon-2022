@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
 import { StyleSheetManager } from "styled-components";
 
 import { AuthContextProvider } from "./contexts/AuthContext";
+import { CommonLayout } from "./layouts/CommonLayout";
 import { Routes } from "./routes";
 import { GlobalStyle } from "./styles/GlobalStyle";
 
@@ -12,9 +12,9 @@ export const App = () => {
     <StyleSheetManager disableCSSOMInjection>
       <AuthContextProvider>
         <GlobalStyle />
-        <BrowserRouter>
+        <CommonLayout>
           <Routes />
-        </BrowserRouter>
+        </CommonLayout>
       </AuthContextProvider>
     </StyleSheetManager>
   );
