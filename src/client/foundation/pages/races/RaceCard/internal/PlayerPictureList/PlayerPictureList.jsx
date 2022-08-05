@@ -34,15 +34,13 @@ const Item = ({ image, name, number }) => {
   return (
     <Stack gap={Space * 1}>
       <div ref={ref}>
-        {isVisible ? (
+        {isVisible && (
           <TrimmedImage
             name={`${name}選手のプロフィール写真`}
             height={100}
             src={image}
             width={100}
           />
-        ) : (
-          <div width={100} height={100} />
         )}
         <Stack horizontal alignItems="center" gap={Space / 2} wrap="wrap">
           <PlayerNumber>{number}</PlayerNumber>

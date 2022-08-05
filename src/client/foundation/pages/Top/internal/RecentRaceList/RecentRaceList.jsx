@@ -98,15 +98,13 @@ const Item = ({ race }) => {
 
         <Stack.Item grow={0} shrink={0}>
           <Stack horizontal alignItems="center" gap={Space * 2}>
-            {isVisible ? (
+            {isVisible && (
               <TrimmedImage
                 height={100}
                 src={race.image}
                 width={100}
                 name={race.name}
               />
-            ) : (
-              <div width={100} height={100} />
             )}
             <RaceButton href={`/races/${race.id}/race-card`}>投票</RaceButton>
           </Stack>
