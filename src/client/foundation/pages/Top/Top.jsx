@@ -117,7 +117,12 @@ export const Top = ({ date = dayjs().format("YYYY-MM-DD") }) => {
     authorizedJsonFetcher,
   );
 
-  const { data: raceData } = useFetch("/api/races", jsonFetcher);
+  const { data: raceData } = useFetch(
+    `/api/races?since=${dayjs(date).unix()}&until=${dayjs(date)
+      .add(1, "day")
+      .unix()}`,
+    jsonFetcher,
+  );
 
   const handleClickChargeButton = useCallback(() => {
     if (chargeDialogRef.current === null) {
