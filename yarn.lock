@@ -1718,13 +1718,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.178":
-  version: 4.14.179
-  resolution: "@types/lodash@npm:4.14.179"
-  checksum: 71faa0c8071732c2b7f0bd092850d3cea96fc7912055d57d819cf2ab399a64150e4190d8a4ea35a0905662ddc118be9d2abd55891d8047c085acf98608156149
-  languageName: node
-  linkType: hard
-
 "@types/mdast@npm:^3.0.0":
   version: 3.0.10
   resolution: "@types/mdast@npm:3.0.10"
@@ -5881,6 +5874,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"just-sort-by@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "just-sort-by@npm:3.0.1"
+  checksum: c4305f179469f1c49bb3e85655e529e1c45d0887f17796a0601d902b14f8e6e95a5b6b08989d263b4023cf46d158a3e25c5f7c84831e046a817c14db7997088b
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^3.0.0":
   version: 3.1.0
   resolution: "keyv@npm:3.1.0"
@@ -9862,7 +9862,6 @@ __metadata:
     "@fortawesome/fontawesome-free": ^5.15.4
     "@loadable/component": ^5.15.2
     "@stylelint/postcss-css-in-js": ^0.37.2
-    "@types/lodash": ^4.14.178
     "@types/react": ^17.0.38
     "@types/react-dom": ^17.0.11
     "@types/styled-components": ^5.1.19
@@ -9884,7 +9883,7 @@ __metadata:
     fastify-sensible: ^3.1.2
     fastify-static: ^4.5.0
     framer-motion: ^6.2.8
-    lodash: ^4.17.21
+    just-sort-by: ^3.0.1
     modern-css-reset: ^1.4.0
     moment-timezone: ^0.5.34
     nodemon: ^2.0.15
