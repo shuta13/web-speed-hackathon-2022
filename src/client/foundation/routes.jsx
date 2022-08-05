@@ -1,25 +1,21 @@
 import React from "react";
 import { Route, Routes as RouterRoutes } from "react-router-dom";
 import loadable from "@loadable/component";
+import { Container } from "./components/layouts/Container";
 
 import { CommonLayout } from "./layouts/CommonLayout";
 
-import { Top } from "./pages/Top";
-import { Odds } from "./pages/races/Odds";
-import { RaceCard } from "./pages/races/RaceCard";
-import { RaceResult } from "./pages/races/RaceResult";
-
 const LTop = loadable(() => import("./pages/Top"), {
-  fallback: <Top />,
+  fallback: <Container pending />,
 });
 const LRaceCard = loadable(() => import("./pages/races/RaceCard"), {
-  fallback: <RaceCard />,
+  fallback: <Container pending />,
 });
 const LOdds = loadable(() => import("./pages/races/Odds"), {
-  fallback: <Odds />,
+  fallback: <Container pending />,
 });
 const LRaceResult = loadable(() => import("./pages/races/RaceResult"), {
-  fallback: <RaceResult />,
+  fallback: <Container pending />,
 });
 
 /** @type {React.VFC} */
