@@ -28,7 +28,7 @@ const PlayerName = styled.span`
 /** @type {React.VFC<ItemProps>} */
 const Item = ({ image, name, number }) => {
   const ref = useRef(null);
-  const entry = useIntersectionObserver(ref, {});
+  const entry = useIntersectionObserver(ref, { freezeOnceVisible: true });
   const isVisible = !!entry?.isIntersecting;
 
   return (

@@ -51,7 +51,7 @@ const Item = ({ race }) => {
   const [closeAtText, setCloseAtText] = useState(formatCloseAt(race.closeAt));
 
   const ref = useRef(null);
-  const entry = useIntersectionObserver(ref, {});
+  const entry = useIntersectionObserver(ref, { freezeOnceVisible: true });
   const isVisible = !!entry?.isIntersecting;
 
   // 締切はリアルタイムで表示したい
