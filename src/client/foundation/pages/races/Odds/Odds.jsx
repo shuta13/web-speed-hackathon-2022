@@ -74,12 +74,16 @@ export const Odds = ({ raceId }) => {
       <Section dark shrink>
         <LiveBadge>Live</LiveBadge>
         <Spacer mt={Space * 2} />
-        <TrimmedImage
-          name={`${data.name}のライブ映像`}
-          height={225}
-          src={data.image}
-          width={400}
-        />
+        {data != null ? (
+          <TrimmedImage
+            name={`${data.name}のライブ映像`}
+            height={225}
+            src={data.image}
+            width={400}
+          />
+        ) : (
+          <div width={400} height={225} />
+        )}
       </Section>
 
       <Spacer mt={Space * 2} />

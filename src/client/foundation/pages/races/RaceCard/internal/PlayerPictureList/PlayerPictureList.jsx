@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
+import { useIntersectionObserver } from "usehooks-ts";
 
 import { Stack } from "../../../../../components/layouts/Stack";
 import { TrimmedImage } from "../../../../../components/media/TrimmedImage";
@@ -26,19 +27,28 @@ const PlayerName = styled.span`
 
 /** @type {React.VFC<ItemProps>} */
 const Item = ({ image, name, number }) => {
+  const ref = useRef(null);
+  const entry = useIntersectionObserver(ref, {});
+  const isVisible = !!entry?.isIntersecting;
+
   return (
     <Stack gap={Space * 1}>
-      <TrimmedImage
-        name={`${name}選手のプロフィール写真`}
-        height={100}
-        src={image}
-        width={100}
-      />
-
-      <Stack horizontal alignItems="center" gap={Space / 2} wrap="wrap">
-        <PlayerNumber>{number}</PlayerNumber>
-        <PlayerName>{name}</PlayerName>
-      </Stack>
+      <div ref={ref}>
+        {isVisible ? (
+          <TrimmedImage
+            name={`${name}選手のプロフィール写真`}
+            height={100}
+            src={image}
+            width={100}
+          />
+        ) : (
+          <div width={100} height={100} />
+        )}
+        <Stack horizontal alignItems="center" gap={Space / 2} wrap="wrap">
+          <PlayerNumber>{number}</PlayerNumber>
+          <PlayerName>{name}</PlayerName>
+        </Stack>
+      </div>
     </Stack>
   );
 };

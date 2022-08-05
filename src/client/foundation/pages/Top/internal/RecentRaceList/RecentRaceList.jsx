@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
+import { useIntersectionObserver } from "usehooks-ts";
 
 import { LinkButton } from "../../../../components/buttons/LinkButton";
 import { Spacer } from "../../../../components/layouts/Spacer";
@@ -49,6 +50,10 @@ const RaceTitle = styled.h2`
 const Item = ({ race }) => {
   const [closeAtText, setCloseAtText] = useState(formatCloseAt(race.closeAt));
 
+  const ref = useRef(null);
+  const entry = useIntersectionObserver(ref, {});
+  const isVisible = !!entry?.isIntersecting;
+
   // 締切はリアルタイムで表示したい
   useEffect(() => {
     const timer = setInterval(() => {
@@ -82,7 +87,7 @@ const Item = ({ race }) => {
   }, [race.id, startAnimation, abortAnimation, resetAnimation]);
 
   return (
-    <ItemWrapper $opacity={opacity}>
+    <ItemWrapper $opacity={opacity} ref={ref}>
       <Stack horizontal alignItems="center" justifyContent="space-between">
         <Stack gap={Space * 1}>
           <RaceTitle>{race.name}</RaceTitle>
@@ -93,12 +98,16 @@ const Item = ({ race }) => {
 
         <Stack.Item grow={0} shrink={0}>
           <Stack horizontal alignItems="center" gap={Space * 2}>
-            <TrimmedImage
-              height={100}
-              src={race.image}
-              width={100}
-              name={race.name}
-            />
+            {isVisible ? (
+              <TrimmedImage
+                height={100}
+                src={race.image}
+                width={100}
+                name={race.name}
+              />
+            ) : (
+              <div width={100} height={100} />
+            )}
             <RaceButton href={`/races/${race.id}/race-card`}>投票</RaceButton>
           </Stack>
         </Stack.Item>
