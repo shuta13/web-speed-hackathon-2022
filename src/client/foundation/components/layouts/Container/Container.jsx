@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   padding-left: ${Space * 2}px;
   padding-right: ${Space * 2}px;
   width: 100%;
-
+  height: ${(props) => (props.pending ? "100vh" : "auto")};
   @media (min-width: ${BreakPoint.TABLET}px) {
     max-width: calc(1024px + ${Space * 5}px * 2);
     padding-left: ${Space * 5}px;
@@ -18,6 +18,6 @@ const Wrapper = styled.div`
 `;
 
 /** @type {React.FC} */
-export const Container = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+export const Container = ({ children, pending }) => {
+  return <Wrapper pending={pending}>{children}</Wrapper>;
 };

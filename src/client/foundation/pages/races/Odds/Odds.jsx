@@ -58,7 +58,7 @@ export const Odds = () => {
   );
 
   if (data == null) {
-    return <Container>Loading...</Container>;
+    return <Container pending>Loading...</Container>;
   }
 
   const isRaceClosed = dayjs(data.closeAt).isBefore(new Date());

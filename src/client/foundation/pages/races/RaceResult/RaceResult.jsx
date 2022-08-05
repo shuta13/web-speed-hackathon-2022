@@ -36,7 +36,7 @@ export const RaceResult = () => {
   );
 
   if (data == null) {
-    return <Container>Loading...</Container>;
+    return <Container pending>Loading...</Container>;
   }
 
   return (
