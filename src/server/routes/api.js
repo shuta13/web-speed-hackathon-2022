@@ -1,4 +1,5 @@
 import { Between, LessThanOrEqual, MoreThanOrEqual } from "typeorm";
+import zenginCode from "zengin-code";
 
 import { dayjs } from "../../client/foundation/utils/day";
 import { assets } from "../../client/foundation/utils/UrlUtils.js";
@@ -44,6 +45,15 @@ export const apiRoute = async (fastify) => {
     const hash = Math.random().toFixed(10).substring(2);
 
     res.send({ hash, url });
+  });
+
+  fastify.get("/zc", (_req, res) => {
+    const bankList = Object.entries(zenginCode).map(([code, { name }]) => ({
+      code,
+      name,
+    }));
+
+    res.send({ bankList, zenginCode });
   });
 
   fastify.get("/races", async (req, res) => {
