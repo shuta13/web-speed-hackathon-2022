@@ -5,11 +5,12 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "build:watch": "yarn build --watch --progress",
+    "dev:watch": "cross-env NODE_ENV=development webpack --watch --progress",
     "analyze:dev": "cross-env NODE_ENV=development ANALYZE=true webpack",
     "analyze:prod": "cross-env NODE_ENV=production ANALYZE=true webpack",
     "serve": "node --enable-source-maps dist/server.js",
     "serve:dev": "wait-on dist/server.js && NODE_OPTIONS=--enable-source-maps nodemon dist/server.js",
-    "dev": "npm-run-all -s clean -p build:watch serve:dev",
+    "dev": "npm-run-all -s clean -p dev:watch serve:dev",
     "clean": "rimraf dist",
     "gen": "scaffdog generate",
     "format": "prettier --write .",

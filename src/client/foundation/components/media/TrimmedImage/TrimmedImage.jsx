@@ -1,11 +1,11 @@
-import React, { lazy, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-const Image = styled.img`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  object-fit: cover;
-`;
+// const ImageFit = styled.img`
+//   width: ${(props) => props.width};
+//   height: ${(props) => props.height};
+//   object-fit: cover;
+// `;
 
 /**
  * アスペクト比を維持したまま、要素のコンテンツボックス全体を埋めるように拡大縮小したサイズを返す
@@ -18,23 +18,23 @@ const Image = styled.img`
  */
 
 /** @type {(cv: Size, img: Size) => Size} */
-// const calcImageSize = (cv, img) => {
-//   const constrainedHeight = cv.width * (img.height / img.width);
-//
-//   if (constrainedHeight >= cv.height) {
-//     return {
-//       height: constrainedHeight,
-//       width: cv.width,
-//     };
-//   }
-//
-//   const constrainedWidth = cv.height * (img.width / img.height);
-//
-//   return {
-//     height: cv.height,
-//     width: constrainedWidth,
-//   };
-// };
+const calcImageSize = (cv, img) => {
+  const constrainedHeight = cv.width * (img.height / img.width);
+
+  if (constrainedHeight >= cv.height) {
+    return {
+      height: constrainedHeight,
+      width: cv.width,
+    };
+  }
+
+  const constrainedWidth = cv.height * (img.width / img.height);
+
+  return {
+    height: cv.height,
+    width: constrainedWidth,
+  };
+};
 
 /**
  * @typedef Props
@@ -46,52 +46,51 @@ const Image = styled.img`
 
 /** @type {React.VFC<Props>} */
 export const TrimmedImage = ({ height, src, width, name }) => {
-  // const [dataUrl, setDataUrl] = useState("");
-  // /** @type {React.MutableRefObject<HTMLImageElement>} */
-  // const ref = useRef();
-
-  // useEffect(() => {
-  //   const img = new Image();
-  //   img.src = src;
-  //   img.onload = () => {
-  //     const canvas = document.createElement("canvas");
-  //     canvas.width = width * 2;
-  //     canvas.height = height * 2;
-
-  //     const { current: el } = ref;
-  //     if (el != null) {
-  //       el.style.width = `${width}px`;
-  //       el.style.height = `${height}px`;
-  //     }
-
-  //     const size = calcImageSize(
-  //       { height: canvas.height, width: canvas.width },
-  //       { height: img.height, width: img.width },
-  //     );
-
-  //     const ctx = canvas.getContext("2d");
-  //     ctx.drawImage(
-  //       img,
-  //       -(size.width - canvas.width) / 2,
-  //       -(size.height - canvas.height) / 2,
-  //       size.width,
-  //       size.height,
-  //     );
-  //     setDataUrl(canvas.toDataURL());
-  //   };
-  // }, [height, src, width]);
-
   src = src.includes(".jpg") ? src.replace(".jpg", ".webp") : src;
+  const [dataUrl, setDataUrl] = useState("");
+  /** @type {React.MutableRefObject<HTMLImageElement>} */
+  const ref = useRef();
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = width * 2;
+      canvas.height = height * 2;
+
+      const { current: el } = ref;
+      if (el != null) {
+        el.style.width = `${width}px`;
+        el.style.height = `${height}px`;
+      }
+
+      const size = calcImageSize(
+        { height: canvas.height, width: canvas.width },
+        { height: img.height, width: img.width },
+      );
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(
+        img,
+        -(size.width - canvas.width) / 2,
+        -(size.height - canvas.height) / 2,
+        size.width,
+        size.height,
+      );
+      setDataUrl(canvas.toDataURL());
+    };
+  }, [height, src, width]);
 
   return (
-    <Image alt={name} src={src} width={width} height={height} loading="lazy" />
-    //<img
-    //  alt={name}
-    //  ref={ref}
-    //  src={dataUrl}
-    //  width={width}
-    //  height={height}
-    //  loading="lazy"
-    ///>
+    // <ImageFit alt={name} src={src} width={width} height={height} loading="lazy" />
+    <img
+      alt={name}
+      ref={ref}
+      src={dataUrl}
+      width={width}
+      height={height}
+      loading="lazy"
+    />
   );
 };
