@@ -79,7 +79,7 @@ export const apiRoute = async (fastify) => {
       });
     }
 
-    const races = await repo.find({
+    let races = await repo.find({
       where,
     });
 

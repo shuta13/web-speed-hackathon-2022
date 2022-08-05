@@ -81,6 +81,8 @@ export const TrimmedImage = ({ height, src, width, name }) => {
   //   };
   // }, [height, src, width]);
 
+  src = src.includes(".jpg") ? src.replace(".jpg", ".webp") : src;
+
   return (
     <Image alt={name} src={src} width={width} height={height} loading="lazy" />
     //<img
