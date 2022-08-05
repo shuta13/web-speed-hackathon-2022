@@ -1,8 +1,8 @@
-import moment from "moment-timezone";
 import React, { useCallback, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
+import { dayjs } from "../../../utils/day";
 import { Container } from "../../../components/layouts/Container";
 import { Section } from "../../../components/layouts/Section";
 import { Spacer } from "../../../components/layouts/Spacer";
@@ -61,7 +61,7 @@ export const Odds = () => {
     return <Container>Loading...</Container>;
   }
 
-  const isRaceClosed = moment(data.closeAt).isBefore(new Date());
+  const isRaceClosed = dayjs(data.closeAt).isBefore(new Date());
 
   return (
     <Container>

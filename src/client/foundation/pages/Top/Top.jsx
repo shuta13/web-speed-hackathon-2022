@@ -1,9 +1,9 @@
-import moment from "moment-timezone";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 // import useSWR from "swr";
 
+import { dayjs } from "../../utils/day";
 import { Container } from "../../components/layouts/Container";
 import { Spacer } from "../../components/layouts/Spacer";
 import { Stack } from "../../components/layouts/Stack";
@@ -100,7 +100,7 @@ function useHeroImage(todayRaces) {
 
 /** @type {React.VFC} */
 export const Top = () => {
-  const { date = moment().format("YYYY-MM-DD") } = useParams();
+  const { date = dayjs().format("YYYY-MM-DD") } = useParams();
 
   const ChargeButton = styled.button`
     background: ${Color.mono[700]};
@@ -139,7 +139,7 @@ export const Top = () => {
       ? [...raceData.races]
           .sort(
             (/** @type {Model.Race} */ a, /** @type {Model.Race} */ b) =>
-              moment(a.startAt) - moment(b.startAt),
+              dayjs(a.startAt) - dayjs(b.startAt),
           )
           .filter((/** @type {Model.Race} */ race) =>
             isSameDay(race.startAt, date),
