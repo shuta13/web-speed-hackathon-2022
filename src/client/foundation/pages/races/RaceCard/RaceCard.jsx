@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import useSWR from "swr";
 
 import { Container } from "../../../components/layouts/Container";
 import { Section } from "../../../components/layouts/Section";
@@ -7,7 +8,6 @@ import { Spacer } from "../../../components/layouts/Spacer";
 import { TrimmedImage } from "../../../components/media/TrimmedImage";
 import { TabNav } from "../../../components/navs/TabNav";
 import { Heading } from "../../../components/typographies/Heading";
-import { useFetch } from "../../../hooks/useFetch";
 import { Color, Radius, Space } from "../../../styles/variables";
 import { formatTime } from "../../../utils/DateUtils";
 import { jsonFetcher } from "../../../utils/HttpUtils";
@@ -26,7 +26,7 @@ const LiveBadge = styled.span`
 
 /** @type {React.VFC} */
 export const RaceCard = ({ raceId }) => {
-  const { data } = useFetch(`/api/races/${raceId}`, jsonFetcher);
+  const { data } = useSWR(`/api/races/${raceId}`, jsonFetcher);
 
   if (data == null) {
     return <Container pending>Loading...</Container>;

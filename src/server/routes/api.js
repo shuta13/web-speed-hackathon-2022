@@ -62,9 +62,6 @@ export const apiRoute = async (fastify) => {
     const until =
       req.query.until != null ? dayjs.unix(req.query.until) : undefined;
 
-    console.log("races", since);
-    console.log("races", until);
-
     if (since != null && !since.isValid()) {
       throw fastify.httpErrors.badRequest();
     }

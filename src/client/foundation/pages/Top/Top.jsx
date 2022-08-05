@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-// import useSWR from "swr";
+import useSWR from "swr";
 
 import { dayjs } from "../../utils/day";
 import { Container } from "../../components/layouts/Container";
@@ -8,7 +8,6 @@ import { Spacer } from "../../components/layouts/Spacer";
 import { Stack } from "../../components/layouts/Stack";
 import { Heading } from "../../components/typographies/Heading";
 import { useAuthorizedFetch } from "../../hooks/useAuthorizedFetch";
-import { useFetch } from "../../hooks/useFetch";
 import { Color, Radius, Space } from "../../styles/variables";
 import { isSameDay } from "../../utils/DateUtils";
 import { authorizedJsonFetcher, jsonFetcher } from "../../utils/HttpUtils";
@@ -87,9 +86,9 @@ function useHeroImage(todayRaces) {
     firstRaceId !== undefined
       ? `/api/hero?firstRaceId=${firstRaceId}`
       : "/api/hero";
-  const { data } = useFetch(url, jsonFetcher);
+  const { data } = useSWR(url, jsonFetcher);
 
-  if (firstRaceId === undefined || data === null) {
+  if (firstRaceId === undefined || data == null) {
     return null;
   }
 
@@ -117,7 +116,7 @@ export const Top = ({ date = dayjs().format("YYYY-MM-DD") }) => {
     authorizedJsonFetcher,
   );
 
-  const { data: raceData } = useFetch(
+  const { data: raceData } = useSWR(
     `/api/races?since=${dayjs(date).unix()}&until=${dayjs(date)
       .add(1, "day")
       .unix()}`,
