@@ -18,23 +18,23 @@ const Image = styled.img`
  */
 
 /** @type {(cv: Size, img: Size) => Size} */
-const calcImageSize = (cv, img) => {
-  const constrainedHeight = cv.width * (img.height / img.width);
-
-  if (constrainedHeight >= cv.height) {
-    return {
-      height: constrainedHeight,
-      width: cv.width,
-    };
-  }
-
-  const constrainedWidth = cv.height * (img.width / img.height);
-
-  return {
-    height: cv.height,
-    width: constrainedWidth,
-  };
-};
+// const calcImageSize = (cv, img) => {
+//   const constrainedHeight = cv.width * (img.height / img.width);
+//
+//   if (constrainedHeight >= cv.height) {
+//     return {
+//       height: constrainedHeight,
+//       width: cv.width,
+//     };
+//   }
+//
+//   const constrainedWidth = cv.height * (img.width / img.height);
+//
+//   return {
+//     height: cv.height,
+//     width: constrainedWidth,
+//   };
+// };
 
 /**
  * @typedef Props
@@ -46,7 +46,6 @@ const calcImageSize = (cv, img) => {
 
 /** @type {React.VFC<Props>} */
 export const TrimmedImage = ({ height, src, width, name }) => {
-  console.log({ height, src, width, name });
   // const [dataUrl, setDataUrl] = useState("");
   // /** @type {React.MutableRefObject<HTMLImageElement>} */
   // const ref = useRef();
